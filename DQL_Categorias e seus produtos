@@ -1,0 +1,14 @@
+SELECT
+    cat.CD_CATEGORIA AS codigo_categoria,
+    cat.DS_CATEGORIA AS nome_categoria,
+    prod.CD_PRODUTO AS codigo_produto,
+    prod.DS_COMPLETA_PROD AS descricao_produto,
+    prod.VL_UNITARIO,
+    prod.TP_EMBALAGEM,
+    prod.VL_PERC_LUCRO
+FROM
+    MC_CATEGORIA_PROD cat
+LEFT JOIN MC_PRODUTO prod ON cat.CD_CATEGORIA = prod.CD_CATEGORIA
+ORDER BY
+    cat.DS_CATEGORIA ASC,
+    prod.DS_PRODUTO ASC;
