@@ -1,0 +1,14 @@
+SELECT
+    cli.NR_CLIENTE AS codigo_cliente,
+    c.NM_CLIENTE,
+    c.DS_EMAIL,
+    c.NR_TELEFONE,
+    c.NM_LOGIN,
+    TO_CHAR(cli.DT_NASCIMENTO, 'DD-MM-YYYY') AS data_nascimento_formatada,
+    TO_CHAR(cli.DT_NASCIMENTO, 'Day', 'NLS_DATE_LANGUAGE=PORTUGUESE') AS dia_da_semana,
+    FLOOR(MONTHS_BETWEEN(SYSDATE, cli.DT_NASCIMENTO) / 12) AS anos_de_vida,
+    cli.FL_SEXO_BIOLOGICO,
+    cli.NR_CPF
+FROM
+    MC_CLI_FISICA cli
+JOIN MC_CLIENTE c ON cli.NR_CLIENTE = c.NR_CLIENTE;
